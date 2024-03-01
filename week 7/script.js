@@ -44,6 +44,8 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
+scene.background = new THREE.Color("#0096C7")
+
 /***********
 ** MESHES **
 ************/
@@ -53,7 +55,7 @@ const caveMaterial = new THREE.MeshStandardMaterial({
 })
 
 // caveWall
-const caveWallGeometry = new THREE.PlaneGeometry(10, 5)
+const caveWallGeometry = new THREE.PlaneGeometry(17, 17)
 const caveWall = new THREE.Mesh(caveWallGeometry, caveMaterial)
 caveWall.rotation.y = Math.PI * 0.5
 caveWall.position.set(-5, 0, 0)
@@ -79,9 +81,25 @@ scene.add(caveFloor)
 const IcosahedronGeometry = new THREE.IcosahedronGeometry(1,0);
 const IcosahedronMaterial = new THREE.MeshNormalMaterial()
 const Icosahedron = new THREE.Mesh(IcosahedronGeometry, IcosahedronMaterial)
-Icosahedron.position.set(6, 1.5, 0)
+//Icosahedron.position.set(6, 1.5, 0)
 Icosahedron.castShadow = true
-scene.add(Icosahedron)
+//scene.add(Icosahedron)
+
+// sphere
+const SphereGeometry = new THREE.SphereGeometry(0.7)
+const SphereMaterial = new THREE.MeshNormalMaterial()
+const Sphere = new THREE.Mesh(SphereGeometry, SphereMaterial)
+//Sphere.position.set(6, 2.5, 0)
+Sphere.position.set(0, 1, 0)
+Sphere.castShadow = true
+//scene.add(Sphere)
+
+// Group
+const Group = new THREE.Group()
+Group.add(Icosahedron)
+Group.add(Sphere)
+scene.add(Group)
+Group.position.set(6, 1.5, 0)
 
 // SUN
 const sunGeometry = new THREE.SphereGeometry()
@@ -122,6 +140,7 @@ scene.add(directionalLight)
 /*******
 ** UI **
 ********/
+/* 
 const ui = new dat.GUI()
 
 const uiObject = {}
@@ -156,6 +175,80 @@ lightPositionFolder
     .add(uiObject, 'reset')
     .name('Reset position')
 
+*/
+
+/*********************
+** DOM INTERACTIONS **
+**********************/
+//domObject
+const domObject = {
+    firstChange:false,
+    secondChange:false,
+    thirdChange:false,
+    fourthChange:false,
+    fithChange:false,
+    sixthChange:false,
+    seventhChange:false,
+    eightChange:false,
+    ninethChange:false,
+}
+
+//continue reading
+document.querySelector('#continue-reading').onclick = function() {
+    document.querySelector('#part-two').classList.remove('hidden')
+    document.querySelector('#part-one').classList.add('hidden')
+}
+//restart
+document.querySelector('#restart').onclick = function() {
+    document.querySelector('#part-two').classList.add('hidden')
+    document.querySelector('#part-one').classList.remove('hidden')
+}
+//first change
+document.querySelector('#first-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//second change
+document.querySelector('#second-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//third change
+document.querySelector('#third-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//fourth change
+document.querySelector('#fith-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//fith change
+document.querySelector('#fourth-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//sixth change
+document.querySelector('#sixth-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//seventh change
+document.querySelector('#seventh-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//eighth change
+document.querySelector('#eighth-change').onclick = function() {
+    domObject.firstChange = true
+}
+
+//nineth change
+document.querySelector('#nineth-change').onclick = function() {
+    
+}
+
+
 
 /*******************
 ** ANIMATION LOOP **
@@ -169,8 +262,17 @@ const animation = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Animate Objects
-    Icosahedron.rotation.y = elapsedTime
-    Icosahedron.position.z = Math.sin(elapsedTime * 0.5) * 2
+    //Icosahedron.rotation.y = elapsedTime
+    //Icosahedron.position.z = Math.sin(elapsedTime * 0.5) * 2
+    Group.rotation.y = elapsedTime
+    Group.position.z = Math.sin(elapsedTime * 0.5) * 2
+    if(secondChange){
+        directionalLight.position.y = Math.sin(elapsedTime)
+    }
+    if(move2)
+    {
+        
+    }
 
     // Update directionalLightHelper
     //directionalLightHelper.update()
@@ -178,10 +280,47 @@ const animation = () =>
     // Update sun position to match directionalLight position
     sun.position.copy(directionalLight.position)
 
-    console.log(camera.position)
+    //console.log(camera.position)
 
     // Controls
     controls.update()
+
+    //DOM INTERACTIONS
+    //first-change
+    if(domObject.firstChange){
+        console.log("bppopaof")
+    }
+
+    //second-change
+
+
+    //third-change
+
+
+    //fourth-change
+
+
+    //fith-change
+
+
+    //sixth-change
+
+
+    //seventh-change
+
+
+    //eighth-change
+
+
+    //nineth-change
+
+
+
+
+
+
+
+    
 
     // Renderer
     renderer.render(scene, camera)
