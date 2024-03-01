@@ -1,0 +1,19 @@
+h1 {
+    color: white;
+    font-size: 48px;
+    text-align: left;
+    padding-left: 155px;
+}
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: -1;
+}
+
+#name{
+    color: white
+
+}
