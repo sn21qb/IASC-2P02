@@ -44,7 +44,7 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
-scene.background = new THREE.Color("#0096C7")
+scene.background = new THREE.Color("#000000")
 
 /***********
 ** MESHES **
@@ -55,7 +55,7 @@ const caveMaterial = new THREE.MeshStandardMaterial({
 })
 
 // caveWall
-const caveWallGeometry = new THREE.PlaneGeometry(17, 17)
+const caveWallGeometry = new THREE.PlaneGeometry(20, 10)
 const caveWall = new THREE.Mesh(caveWallGeometry, caveMaterial)
 caveWall.rotation.y = Math.PI * 0.5
 caveWall.position.set(-5, 0, 0)
@@ -186,11 +186,10 @@ const domObject = {
     secondChange:false,
     thirdChange:false,
     fourthChange:false,
-    fithChange:false,
+    fifthChange:false,
     sixthChange:false,
     seventhChange:false,
     eightChange:false,
-    ninethChange:false,
 }
 
 //continue reading
@@ -203,6 +202,7 @@ document.querySelector('#restart').onclick = function() {
     document.querySelector('#part-two').classList.add('hidden')
     document.querySelector('#part-one').classList.remove('hidden')
 }
+
 //first change
 document.querySelector('#first-change').onclick = function() {
     domObject.firstChange = true
@@ -210,43 +210,39 @@ document.querySelector('#first-change').onclick = function() {
 
 //second change
 document.querySelector('#second-change').onclick = function() {
-    domObject.firstChange = true
+    domObject.secondChange = true
 }
 
 //third change
 document.querySelector('#third-change').onclick = function() {
-    domObject.firstChange = true
+    domObject.thirdChange = true
 }
 
 //fourth change
-document.querySelector('#fith-change').onclick = function() {
-    domObject.firstChange = true
+document.querySelector('#fourth-change').onclick = function() {
+    domObject.fourthChange = true
 }
 
-//fith change
-document.querySelector('#fourth-change').onclick = function() {
-    domObject.firstChange = true
+//fifth change
+document.querySelector('#fifth-change').onclick = function() {
+    domObject.fifthChange = true
 }
 
 //sixth change
 document.querySelector('#sixth-change').onclick = function() {
-    domObject.firstChange = true
+    domObject.sixthChange = true
 }
 
 //seventh change
 document.querySelector('#seventh-change').onclick = function() {
-    domObject.firstChange = true
+    domObject.seventhChange = true
 }
 
 //eighth change
 document.querySelector('#eighth-change').onclick = function() {
-    domObject.firstChange = true
+    domObject.eighthChange = true
 }
 
-//nineth change
-document.querySelector('#nineth-change').onclick = function() {
-    
-}
 
 
 
@@ -266,13 +262,13 @@ const animation = () =>
     //Icosahedron.position.z = Math.sin(elapsedTime * 0.5) * 2
     Group.rotation.y = elapsedTime
     Group.position.z = Math.sin(elapsedTime * 0.5) * 2
-    if(secondChange){
-        directionalLight.position.y = Math.sin(elapsedTime)
-    }
-    if(move2)
-    {
+    //if(secondChange){
+    //    directionalLight.position.y = Math.sin(elapsedTime)
+    //}
+    //if(move2)
+    //{
         
-    }
+    //}
 
     // Update directionalLightHelper
     //directionalLightHelper.update()
@@ -288,39 +284,53 @@ const animation = () =>
     //DOM INTERACTIONS
     //first-change
     if(domObject.firstChange){
-        console.log("bppopaof")
+        Group.position.y = Math.sin(elapsedTime * 1) * -4
+        Group.position.x = 3
+    }
+    
+    //second-change
+    if(domObject.secondChange){
+        Group.position.set(6, 1.5, 0)
+
+        Group.position.z = Math.sin(elapsedTime * 0.5) * 2
     }
 
-    //second-change
-
-
     //third-change
-
+    if(domObject.thirdChange){
+        camera.position.set(10, 5, 0)
+    }
 
     //fourth-change
+    if(domObject.fourthChange){
+        camera.position.set(15, 8, 0)
+        //scene.background = new THREE.Color("#0000FF")
+    }
 
-
-    //fith-change
-
+    //fifth-change
+    if(domObject.fifthChange){
+        camera.position.set(10, 8, 10)
+        directionalLight.position.y = 5
+    }
 
     //sixth-change
+    if(domObject.sixthChange){
 
+    }
 
     //seventh-change
+    if(domObject.seventhChange){
 
+    }
 
     //eighth-change
+    if(domObject.eighthChange){
 
+    }
 
     //nineth-change
+    if(domObject.ninethChange){
 
-
-
-
-
-
-
-    
+    }
 
     // Renderer
     renderer.render(scene, camera)

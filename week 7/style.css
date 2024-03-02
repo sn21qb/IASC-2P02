@@ -12,7 +12,7 @@ h2{
 }
 
 p{
-    font-size: 28px;
+    font-size: 25px;
     margin-bottom: 24px;
 }
 
@@ -42,7 +42,7 @@ body{
 }
 
 .clickable:hover{
-    color: purple;
+    color: rgb(0, 119, 255);
 }
 
 .hidden{
