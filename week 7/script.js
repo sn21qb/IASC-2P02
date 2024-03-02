@@ -94,6 +94,17 @@ Sphere.position.set(0, 1, 0)
 Sphere.castShadow = true
 //scene.add(Sphere)
 
+// cylinder
+const CylinderGeometry = new THREE.CylinderGeometry(1, 1, 1)
+const CylinderMaterial = new THREE.MeshNormalMaterial()
+const Cylinder = new THREE.Mesh(CylinderGeometry, CylinderMaterial)
+//Sphere.position.set(5, 2.5, 0)
+Cylinder.position.set(-1, -1, -2)
+Cylinder.castShadow = true
+scene.add(Cylinder)
+Cylinder.visible = false
+
+
 // Group
 const Group = new THREE.Group()
 Group.add(Icosahedron)
@@ -188,19 +199,41 @@ const domObject = {
     fourthChange:false,
     fifthChange:false,
     sixthChange:false,
-    seventhChange:false,
-    eightChange:false,
+
 }
 
 //continue reading
 document.querySelector('#continue-reading').onclick = function() {
     document.querySelector('#part-two').classList.remove('hidden')
     document.querySelector('#part-one').classList.add('hidden')
+
 }
 //restart
 document.querySelector('#restart').onclick = function() {
     document.querySelector('#part-two').classList.add('hidden')
     document.querySelector('#part-one').classList.remove('hidden')
+
+    //reset domObject changes
+    domObject.firstChange = false
+    domObject.secondChange = false
+    domObject.thirdChange = false
+    domObject.fourthChange = false
+    domObject.fifthChange = false
+    domObject.sixthChange = false
+
+
+    //reset cylinder
+    Cylinder.visible = false
+
+    //reset camera pos
+    camera.position.set(1, 0, 0)
+
+    //reset directional light
+    directionalLight.position.set(10, 2.5, 0)
+
+    //reset Shpere and Icosahedron
+    Group.position.set(6, 1.5, 0)
+
 }
 
 //first change
@@ -231,16 +264,7 @@ document.querySelector('#fifth-change').onclick = function() {
 //sixth change
 document.querySelector('#sixth-change').onclick = function() {
     domObject.sixthChange = true
-}
-
-//seventh change
-document.querySelector('#seventh-change').onclick = function() {
-    domObject.seventhChange = true
-}
-
-//eighth change
-document.querySelector('#eighth-change').onclick = function() {
-    domObject.eighthChange = true
+    Cylinder.visible = true
 }
 
 
@@ -309,27 +333,13 @@ const animation = () =>
     //fifth-change
     if(domObject.fifthChange){
         camera.position.set(10, 8, 10)
-        directionalLight.position.y = 5
+        directionalLight.position.y = Math.sin (elapsedTime * 0.5) * 8
     }
 
     //sixth-change
     if(domObject.sixthChange){
-
-    }
-
-    //seventh-change
-    if(domObject.seventhChange){
-
-    }
-
-    //eighth-change
-    if(domObject.eighthChange){
-
-    }
-
-    //nineth-change
-    if(domObject.ninethChange){
-
+        scene.add(Cylinder)
+        directionalLight.position.z = Math.sin (elapsedTime * 0.5) * 8
     }
 
     // Renderer
