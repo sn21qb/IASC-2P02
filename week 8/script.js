@@ -84,7 +84,6 @@ scene.add(cube)
 
 /*****************
 ** GLTF MODELS **
-if i delete anything related to the model my cube doesnt show up  so idk what to do and just kept it
 *****************/
 const loader = new GLTFLoader()
 let model = null
@@ -187,42 +186,7 @@ const animation = () => {
             
         }
     }
-
-   // DOM INTERACTIONS - MODEL
-
-   if(model){
-    model.rotation.y = elapsedTime * 0.5
-   }
-  // Part 2
-  if(domObject.part === 2){
-    if(model.rotation.y <= Math.PI * 0.5){
-        model.rotation.y += 0.02
-    }
-    }
-    // Part 3
-    if(domObject.part === 3){
-        if(model.rotation.z <= Math.PI * 0.5){
-            model.rotation.z += 0.02
-        }
-    }
-
-    // Reset
-    if(domObject.part == 1){
-        if(model){
-        if(model.rotation.y >= 0 && model.rotation.z >= 0){
-            model.rotation.y -= 0.02
-            model.rotation.z -= 0.02
-        }
-    }
-    }
-
-    // CURSOR CONTROL - MODEL
-    if(model)
-    {
-        model.rotation.y = cursor.x * 2
-        model.rotation.x = cursor.y + .25
-    }
-
+    
     // Renderer
     renderer.render(scene, camera)
 
