@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>3D Portfolio</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- three.js importmap -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://ga.jspm.io/npm:three@0.158.0/build/three.module.js",
+                "OrbitControls": "https://ga.jspm.io/npm:three@0.158.0/examples/jsm/controls/OrbitControls.js",
+                "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.19.1/dist/lil-gui.esm.js",
+                "GLTFLoader": "https://ga.jspm.io/npm:three@0.158.0/examples/jsm/loaders/GLTFLoader.js"
+            }
+        }
+    </script>
+
+    <!-- three.js -->
+    <script src="script.js" type="module"></script>
+</head>
+<body>
+    <!-- canvas -->
+    <canvas class="webgl"></canvas>
+
+    <!-- splash -->
+    <section class="splash">
+        <h1>Sadie Nguyen</h1>
+    </section>
+
+    <!-- content -->
+    <section class="content" id="first">
+        <h1>About me</h1>
+        <p>I am a second year in IASC and my interests include 3D modeling, animation, music, and editing. 
+            I hope to become a graphics designer or a environmental 3D modeling artist in the future.</p>
+        <p><span class="clickable" id="click1">View projects</span></p>
+    </section>
+
+    <section class="content hidden" id="second">
+        <h1>Interactive Essay</h1>
+        <p>It descirbes the scene of what the people living in the cave see, thinking 
+            that the shadow is a god, they praise it. However, they soon find out
+            the truth that it is just a shadow of a diamond shaped figure.
+            The essay illuminates the idea that there are multiple perspectives to consider.</p>
+        <p><span class="clickable" id="click2">Next project</span></p>
+    </section>
+
+    <section class="content hidden" id="third">
+        <h1>Data Visualization</h1>
+        <p>The story that I have chose is "The Fall of The House of Usher" by Edgar Allan Poe. Based on some of these text within the story, "The mansion, once grand, 
+            now stood in decay, its once proud walls crumbling and ivy-covered...It was as if the 
+            very soul of the house had been tainted by darkness, 
+            and I could not shake the feeling of impending doom," I will be 
+            creating a visualization of what the mansion looks like.</p>
+        <p><span class="clickable" id="click3">Back to Home</span></p>
+    </section>
+
+    <section class="footer">
+       
+    </section>
+</body>
