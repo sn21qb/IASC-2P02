@@ -60,8 +60,8 @@ const cubeGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5)
 const redMaterial = new THREE.MeshStandardMaterial({
     color: new THREE.Color('red')
 })
-const greenMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color('green')
+const purpleMaterial = new THREE.MeshStandardMaterial({
+    color: new THREE.Color('purple')
 })
 const blueMaterial = new THREE.MeshStandardMaterial({
     color: new THREE.Color('blue')
@@ -135,7 +135,7 @@ const parseTextandTerms = () =>
     findTermInParsedText(uiobj.term1, redMaterial)
 
     // Find term 2
-    findTermInParsedText(uiobj.term2, greenMaterial)
+    findTermInParsedText(uiobj.term2, purpleMaterial)
 
     // Find term 3
     findTermInParsedText(uiobj.term3, blueMaterial)
@@ -175,7 +175,7 @@ termsFolder
 
 termsFolder
     .add(uiobj, 'term2')
-    .name('Green Term')
+    .name('purple Term')
 
 termsFolder
     .add(uiobj, 'term3')
@@ -197,7 +197,7 @@ const createInteractionFolders = () =>
         .name(`${uiobj.term1}`)
 
     cubesFolder
-        .add(greenMaterial, 'visible')
+        .add(purpleMaterial, 'visible')
         .name(`${uiobj.term2}`)
 
     cubesFolder
