@@ -54,7 +54,7 @@ scene.add(directionalLight)
 ** MESHES **
 ************/
 // Cube Geometry
-const cubeGeometry = new THREE.TorusGeometry(0.5, 0.2)
+const cubeGeometry = new THREE.TorusKnotGeometry(1, 0.2)
 
 // Cube Materials
 const redMaterial = new THREE.MeshStandardMaterial({
@@ -90,9 +90,8 @@ let preset = {}
 const uiobj = {
     text: '',
     textArray: [],
-    term1: 'cupboard',
-    term2: 'hat',
-    term3: 'broom',
+    term1: 'usher',
+    term2: 'madeline',
     rotateCamera: false
 }
 
@@ -113,9 +112,6 @@ const parseTextandTerms = () =>
 
     // Find term 2
     findTermInParsedText(uiobj.term2, greenMaterial)
-
-    // Find term 3
-    findTermInParsedText(uiobj.term3, blueMaterial)
 
 }
 
@@ -141,7 +137,7 @@ const findTermInParsedText = (term, material) =>
 }
 
 // Load source text
-fetch("https://raw.githubusercontent.com/amephraim/nlp/master/texts/J.%20K.%20Rowling%20-%20Harry%20Potter%201%20-%20Sorcerer's%20Stone.txt")
+fetch("https://raw.githubusercontent.com/sn21qb/IASC-2P02/main/assignment%202/HouseUsher.txt")
     .then(response => response.text())
     .then((data) =>
     {
@@ -167,9 +163,6 @@ const ui = new dat.GUI({
         .add(greenMaterial, 'visible')
         .name(`${uiobj.term2}`)
 
-    cubesFolder
-        .add(blueMaterial, 'visible')
-        .name(`${uiobj.term3}`)
 
     // Camera Folder
     const cameraFolder = ui.addFolder('Camera')
