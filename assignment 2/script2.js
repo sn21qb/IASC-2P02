@@ -47,7 +47,7 @@ controls.enableDamping = true
 ** LIGHTS **
 ************/
 // Directional Light
-const directionalLight = new THREE.DirectionalLight(0x404040, 100)
+const directionalLight = new THREE.DirectionalLight(0x404040, 20)
 scene.add(directionalLight)
 
 /***********
@@ -61,10 +61,10 @@ const orangeMaterial = new THREE.MeshStandardMaterial({
     color: new THREE.Color('orange')
 })
 const pinkMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color('pink')
+    color: new THREE.Color('green')
 })
 const aquaMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color('aqua')
+    color: new THREE.Color('yellow')
 })
 
 const drawSphere = (i, material) =>
@@ -92,9 +92,9 @@ let preset = {}
 const uiobj = {
     text: '',
     textArray: [],
-    term1: 'door',
-    term2: 'house',
-    term3: 'wall',
+    term1: 'house',
+    term2: 'wall',
+    term3: 'door',
     rotateCamera: false,
     animateBubbles: false
 }
